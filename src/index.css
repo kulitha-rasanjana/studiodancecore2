@@ -1,1 +1,214 @@
 @import "tailwindcss";
+
+/* ==========================================
+   CUSTOM FONTS
+========================================== */
+
+@font-face {
+    font-family: "MetroPhotograph";
+    src: url("./assets/fonts/MetroPhotograph-DemoVersion-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BebasNeue";
+    src: url("./assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================
+   GLOBAL FONT VARIABLES
+   Change fonts here in the future
+========================================== */
+
+:root {
+    --studio-font-h1: "MetroPhotograph", sans-serif;
+    --studio-font-heading: "BebasNeue", sans-serif;
+    --studio-font-body: Calibri, Carlito, Arial, sans-serif;
+
+    font-family: var(--studio-font-body);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Tailwind CSS v4 custom font utilities */
+
+@theme inline {
+    --font-display: var(--studio-font-h1);
+    --font-heading: var(--studio-font-heading);
+    --font-body: var(--studio-font-body);
+}
+
+/* ==========================================
+   GLOBAL TYPOGRAPHY
+========================================== */
+
+/* Main headings */
+h1 {
+    font-family: var(--studio-font-h1);
+    font-weight: 400;
+}
+
+/* Other headings */
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--studio-font-heading);
+    font-weight: 400;
+}
+
+/* Body content */
+body {
+    font-family: var(--studio-font-body);
+}
+
+/* Form elements inherit body font */
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+/* ==========================================
+   GLOBAL RESET
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: #020b12;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   HAPPENING SECTION BACKGROUND
+========================================== */
+
+.happening-section {
+    background-color: #f5f5f5;
+    background-image: url("/assets/cards-background.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* ==========================================
+   DESKTOP OVERLAPPING CARDS
+========================================== */
+
+@media (min-width: 768px) {
+    .happening-card+.happening-card {
+        margin-left: -2.2%;
+    }
+
+    .happening-card:nth-child(1) {
+        transform: rotate(-3deg);
+    }
+
+    .happening-card:nth-child(2) {
+        transform: rotate(-2deg);
+    }
+
+    .happening-card:nth-child(3) {
+        transform: rotate(0deg);
+    }
+
+    .happening-card:nth-child(4) {
+        transform: rotate(2deg);
+    }
+
+    .happening-card:nth-child(5) {
+        transform: rotate(3deg);
+    }
+
+    .happening-card:hover {
+        transform: translateY(-14px) rotate(0deg) scale(1.04);
+    }
+}
+
+/* ==========================================
+   MOBILE CAROUSEL
+========================================== */
+
+@media (max-width: 767px) {
+    .happening-track {
+        gap: 14px;
+        scroll-behavior: smooth;
+        scroll-padding-inline: 12vw;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .happening-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .happening-card {
+        transform: scale(0.94);
+    }
+
+    .happening-card:active {
+        transform: scale(0.97);
+    }
+
+    .happening-section {
+        background-position: center;
+    }
+}
+
+/* ==========================================
+   ANGLED ABOUT US PANEL
+========================================== */
+
+@media (min-width: 768px) {
+    .about-logo-panel {
+        clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+        margin-left: -10%;
+        padding-left: 20%;
+    }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
